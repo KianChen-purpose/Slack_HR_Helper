@@ -1,0 +1,5 @@
+# Purpose HR Assistant dependencies.
+# Versions are pinned to recent, known-good minimums; bump as needed.
+slack-bolt>=1.21.0
+anthropic>=1.0.0
+python-dotenv>=1.0.0

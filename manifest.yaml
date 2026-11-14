@@ -1,0 +1,44 @@
+# Slack app manifest for the Purpose HR Assistant.
+#
+# Create the app from this manifest at https://api.slack.com/apps -> "Create New App"
+# -> "From an app manifest", then install it to your workspace.
+#
+# Socket Mode requires an app-level token with the `connections:write` scope.
+# Generate it under "Basic Information" -> "App-Level Tokens" after creating the
+# app; it is the SLACK_APP_TOKEN (xapp-...) the bot uses. The bot user OAuth
+# token (xoxb-...) from "OAuth & Permissions" is the SLACK_BOT_TOKEN.
+display_information:
+  name: Purpose HR Assistant
+  description: Answers Purpose employees' HR questions, grounded in the Team Playbook.
+  background_color: "#1a1a2e"
+
+features:
+  bot_user:
+    display_name: Purpose HR Assistant
+    always_online: true
+  slash_commands:
+    - command: /ask-hr
+      description: Ask an HR question answered from the Purpose Team Playbook
+      usage_hint: how much vacation do I get?
+      should_escape: false
+
+oauth_config:
+  scopes:
+    bot:
+      - app_mentions:read
+      - chat:write
+      - commands
+      - im:history
+      - im:read
+      - im:write
+
+settings:
+  event_subscriptions:
+    bot_events:
+      - app_mention
+      - message.im
+  interactivity:
+    is_enabled: true
+  org_deploy_enabled: false
+  socket_mode_enabled: true
+  token_rotation_enabled: false
